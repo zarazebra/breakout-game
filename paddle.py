@@ -12,7 +12,9 @@ class Paddle(Turtle):
         self.color("white")
 
     def move_right(self):
-        self.forward(10)
+        if self.pos() <= (325, -270):
+            self.forward(10)
 
     def move_left(self):
-        self.back(10)
+        if self.pos() >= (-330, -270):
+            self.back(10)
