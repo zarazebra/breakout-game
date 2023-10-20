@@ -28,7 +28,8 @@ class Ball(Turtle):
             self.y_dir *= -1
 
     def detect_out(self):
-        if self.ycor() < -250:
+        if self.ycor() == -270:
             print("Game Over")
+            return True
 
 
