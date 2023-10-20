@@ -5,7 +5,7 @@ class Ball(Turtle):
     def __init__(self):
         super().__init__()
         self.penup()
-        self.goto(0, -100)
+        self.goto(0, -50)
         self.shape("circle")
         self.color("white")
         self.speed(1)
@@ -16,8 +16,19 @@ class Ball(Turtle):
         self.goto(self.xcor() + self.x_dir, self.ycor() + self.y_dir)
 
     def detect_paddle(self, paddle):
-        if self.ycor() <= -250:
+        if self.ycor() == -250:
             if paddle.xcor() - 50 <= self.xcor() <= paddle.xcor() + 50:
-                self.x_dir *= -1
                 self.y_dir *= -1
+
+    def detect_walls(self):
+        if -250 < self.ycor() < 283:
+            if self.xcor() < -385 or self.xcor() > 379:
+                self.x_dir *= -1
+        elif self.ycor() >= 283:
+            self.y_dir *= -1
+
+    def detect_out(self):
+        if self.ycor() < -250:
+            print("Game Over")
+
 

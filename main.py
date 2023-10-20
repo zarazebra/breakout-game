@@ -18,6 +18,8 @@ window.listen()
 while game_is_on:
     ball.moving()
     ball.detect_paddle(paddle)
+    ball.detect_walls()
+    ball.detect_out()
 
 
 window.exitonclick()
