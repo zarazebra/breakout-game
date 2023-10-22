@@ -18,3 +18,8 @@ class Score(Turtle):
         self.pendown()
         self.pencolor("red")
         self.write(f"GAME OVER", align="center", font=("Courier", 50, "bold"))
+
+    def score_points(self, brick_score):
+        self.clear()
+        self.score += brick_score
+        self.write(f"Score: {self.score}", align="center", font=("Courier", 20, "bold"))

@@ -9,7 +9,7 @@ class Brick(Detector):
         self.shapesize(stretch_wid=0.5, stretch_len=2)
         self.x_pos = None
         self.y_pos = None
-        self.points = None
+        self.points = 0
 
 
 

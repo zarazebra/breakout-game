@@ -29,7 +29,9 @@ while game_is_on:
     window.tracer(1)
     ball.moving()
     ball.detect_paddle(paddle)
+    score_point = ball.detect_brick(wall.bricks)
     ball.detect_walls()
+    score.score_points(score_point)
     if ball.detect_out():
         game_is_on = False
         score.game_over()
