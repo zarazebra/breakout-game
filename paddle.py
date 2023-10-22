@@ -1,7 +1,7 @@
-from turtle import Turtle
+from detector import Detector
 
 
-class Paddle(Turtle):
+class Paddle(Detector):
     def __init__(self):
         super().__init__()
         self.penup()

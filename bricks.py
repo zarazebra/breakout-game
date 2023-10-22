@@ -1,7 +1,7 @@
-from turtle import Turtle
+from detector import Detector
 
 
-class Brick(Turtle):
+class Brick(Detector):
     def __init__(self):
         super().__init__()
         self.penup()

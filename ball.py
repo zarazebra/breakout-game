@@ -1,6 +1,5 @@
 from turtle import Turtle
 
-
 class Ball(Turtle):
     def __init__(self):
         super().__init__()
@@ -16,9 +15,8 @@ class Ball(Turtle):
         self.goto(self.xcor() + self.x_dir, self.ycor() + self.y_dir)
 
     def detect_paddle(self, paddle):
-        if self.ycor() == -250:
-            if paddle.xcor() - 50 <= self.xcor() <= paddle.xcor() + 50:
-                self.y_dir *= -1
+        if paddle.detect_collision(self):
+            self.y_dir *= -1
 
     def detect_walls(self):
         if -250 < self.ycor() < 283:
@@ -31,5 +29,3 @@ class Ball(Turtle):
         if self.ycor() == -270:
             print("Game Over")
             return True
-
-
