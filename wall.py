@@ -26,3 +26,11 @@ class Wall:
                 self.x_cor += 45
             self.y_cor -= 15
             self.x_cor = -365
+
+    def wall_detect_collision(self, ball):
+        for brick in self.bricks:
+            if brick.detect_collision(ball):
+                if brick.isvisible():
+                    brick.hideturtle()
+                    return brick
+        return None
