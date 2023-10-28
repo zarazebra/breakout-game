@@ -9,9 +9,12 @@ class Ball(Turtle):
         self.goto(0, -50)
         self.shape("circle")
         self.color("white")
-        self.speed(1)
+        self.ball_speed = 1
+        self.speed(self.ball_speed)
         self.x_dir = 10
         self.y_dir = -10
+        self.num_brick_coll = 0
+        self.speed_increase = 0.5
 
     def move(self):
         self.goto(self.xcor() + self.x_dir, self.ycor() + self.y_dir)
@@ -22,18 +25,31 @@ class Ball(Turtle):
         elif type == 'Y':
             self.x_dir *= -1
 
+    def speed_up(self):
+        if self.num_brick_coll % 10 == 0 and self.num_brick_coll != 0:
+            self.ball_speed += self.speed_increase
+            if self.ball_speed > 10:
+                self.ball_speed = 10
+                self.speed_increase = 0
+            self.speed(self.ball_speed)
+
     def detect_paddle(self, paddle):
         if paddle.detect_collision(self):
             self.y_dir *= -1
 
-    def detect_brick(self, bricks):
-        for brick in bricks:
-            if brick.detect_collision(self):
-                if brick.isvisible():
-                    brick.hideturtle()
-                    self.y_dir *= -1
-                    return brick.points
-        return 0
+    # def detect_brick(self, bricks):
+    #     for brick in bricks:
+    #         if brick.detect_collision(self):
+    #             if brick.isvisible():
+    #                 self.num_brick_coll += 1
+    #                 print(self.num_brick_coll)
+    #                 print(self.speedvariable)
+    #                 self.speed_up()
+    #                 print(self.speedvariable)
+    #                 brick.hideturtle()
+    #                 self.y_dir *= -1
+    #                 return brick.points
+    #     return 0
 
     def detect_walls(self):
         if -250 < self.ycor() < 283:

@@ -32,5 +32,7 @@ class Wall:
             if brick.detect_collision(ball):
                 if brick.isvisible():
                     brick.hideturtle()
+                    ball.num_brick_coll += 1
+                    ball.speed_up()
                     return brick
         return None
