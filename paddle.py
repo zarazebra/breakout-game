@@ -13,8 +13,8 @@ class Paddle(Detector):
 
     def move_right(self):
         if self.pos() <= (325, -270):
-            self.forward(10)
+            self.forward(20)
 
     def move_left(self):
         if self.pos() >= (-330, -270):
-            self.back(10)
+            self.back(20)

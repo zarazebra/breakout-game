@@ -38,6 +38,7 @@ class Game:
             if brick is not None:
                 self.ball.bounce('X')
                 # check score
+                self.score.score_points(brick.points)
 
             if self.paddle.detect_collision(self.ball):
                 self.ball.bounce('X')
