@@ -10,10 +10,3 @@ class Brick(Detector):
         self.x_pos = None
         self.y_pos = None
         self.points = 0
-
-
-
-
-
-
-

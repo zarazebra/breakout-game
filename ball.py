@@ -1,4 +1,3 @@
-from enum import Enum
 from turtle import Turtle
 
 
@@ -19,10 +18,10 @@ class Ball(Turtle):
     def move(self):
         self.goto(self.xcor() + self.x_dir, self.ycor() + self.y_dir)
 
-    def bounce(self, type):
-        if type == 'X':
+    def bounce(self, direction):
+        if direction == 'X':
             self.y_dir *= -1
-        elif type == 'Y':
+        elif direction == 'Y':
             self.x_dir *= -1
 
     def speed_up(self):
@@ -37,20 +36,6 @@ class Ball(Turtle):
         if paddle.detect_collision(self):
             self.y_dir *= -1
 
-    # def detect_brick(self, bricks):
-    #     for brick in bricks:
-    #         if brick.detect_collision(self):
-    #             if brick.isvisible():
-    #                 self.num_brick_coll += 1
-    #                 print(self.num_brick_coll)
-    #                 print(self.speedvariable)
-    #                 self.speed_up()
-    #                 print(self.speedvariable)
-    #                 brick.hideturtle()
-    #                 self.y_dir *= -1
-    #                 return brick.points
-    #     return 0
-
     def detect_walls(self):
         if -250 < self.ycor() < 283:
             if self.xcor() < -385 or self.xcor() > 379:
@@ -62,8 +47,3 @@ class Ball(Turtle):
         if self.ycor() == -270:
             print("Game Over")
             return True
-
-
-    class BounceType(Enum):
-        Horizontal = 1
-        Vertical = 2

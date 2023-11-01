@@ -20,6 +20,8 @@ class Game:
         self.wall = Wall()
         self.wall.building_brick_wall()
 
+        #self.database = HighScore()
+
     def setup_window(self):
         self.window.tracer(0)
         self.window.onkey(self.paddle.move_right, "Right")
@@ -29,15 +31,14 @@ class Game:
     def start(self):
         self.window.tracer(1)
         while not self.game_over:
-            # move ball
+
             self.ball.move()
             self.check()
 
-            # check coll
             brick = self.wall.wall_detect_collision(self.ball)
             if brick is not None:
                 self.ball.bounce('X')
-                # check score
+
                 self.score.score_points(brick.points)
 
             if self.paddle.detect_collision(self.ball):
